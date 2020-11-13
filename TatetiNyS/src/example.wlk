@@ -28,3 +28,29 @@ object tateti {
 		jugadorActual = jugadores.first()
 		jugadorActual.jugar()
 	}
+	method desplegarJugadores(){
+		tablero.mostrarJugadores(jugadores)
+	}
+	method desplegarMarcas() {
+		tablero.mostrarMarcas(jugadores.map{j=>j.marca()})
+	}
+	method siguienteJugada(){
+		jugadorActual.jugar()
+	}
+
+	method jugadaInteractiva(casillero){
+		if(jugadorActual.interactivo()){
+			self.jugada(casillero)
+		}
+	}
+
+	method jugada(casillero){
+		self.validarFinPartido()
+		self.validarCasilleroLibre(casillero)
+		self.jugarTurno(jugadorActual,casillero)
+		if(self.terminoElPartido())
+			self.finalizar()
+		else
+			self.cambiarTurno()
+	}
+	
