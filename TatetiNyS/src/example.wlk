@@ -53,4 +53,19 @@ object tateti {
 		else
 			self.cambiarTurno()
 	}
-	
+method validarCasilleroLibre(casillero){
+        if(!self.estaLibre(casillero)){
+            throw new Exception(message = "Casillero ocupado" + casillero.printString())
+        }
+    }
+    method validarFinPartido(){
+        if(self.terminoElPartido())
+            throw new Exception(message = "Partido terminado")
+    }
+    method estaLibre(casillero)    = 
+        casillerosLibres.contains(casillero)
+
+    method ocuparCasillero(casillero){
+        casillerosLibres.remove(casillero)
+        casillerosOcupados.add(casillero)
+    }
