@@ -69,3 +69,26 @@ method validarCasilleroLibre(casillero){
         casillerosLibres.remove(casillero)
         casillerosOcupados.add(casillero)
     }
+method jugarTurno(jugador, casillero) {
+        self.ocuparCasillero(casillero)
+        jugador.marcarCasillero(casillero)
+        tablero.mostrarJugada(jugador.nombre(),casillero)
+    }
+
+    method oponente(jugador) = jugadores.find{j=>j != jugador}
+
+    method cambiarTurno(){
+        jugadorActual = self.oponente(jugadorActual)
+    }
+
+    method terminoElPartido() =
+        self.sinCasillerosLibres() or self.hayGanador() 
+
+    method finalizar(){
+        var resultado = empate
+        if(self.hayGanador()){
+            victoria.ganador(self.ganador())
+            resultado = victoria 
+        }
+        tablero.mensaje(resultado,casillerosOcupados.last())
+    }
