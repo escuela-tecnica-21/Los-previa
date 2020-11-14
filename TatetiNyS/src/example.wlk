@@ -92,3 +92,23 @@ method jugarTurno(jugador, casillero) {
         }
         tablero.mensaje(resultado,casillerosOcupados.last())
     }
+method esGanador(jugador) =
+        combinacionesGanadoras.any({combinacion => jugador.tieneCombinacion(combinacion)})
+
+    method hayGanador()    = 
+        jugadores.any{jugador => self.esGanador(jugador)}
+
+    method ganador() =
+        jugadores.find{jugador => self.esGanador(jugador)}
+
+
+    method sinCasillerosLibres() = casillerosLibres.isEmpty()
+
+    method cambioModoPrimero(){
+        jugadores.first().rotarInteligencia()
+    }
+    method cambioModoUltimo(){
+        jugadores.last().rotarInteligencia()
+    }
+
+}
