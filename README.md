@@ -24,4 +24,5 @@ Flechita hacia abajo ↓ Cambiar modo de juego del jugador Windows (Persona/Maqu
                                                                                                       |
 Aguiar Lucas y Sebastián Zinzala                                                                      |
 ______________________________________________________________________________________________________|                                                                                                      
-                                                                                                      
+  
+IMAGENES 128*128                                                                                                    
