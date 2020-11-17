@@ -112,3 +112,31 @@ method esGanador(jugador) =
     }
 
 }
+
+
+class Jugador {
+	var property marca
+	var ocupados = []
+	var property inteligencia = humano
+	
+	method image() = inteligencia.image()
+	method nombre() = marca.nombre()		
+	method marcarCasillero(casillero)	{
+		ocupados.add(casillero)
+	}
+	method recomenzar(){
+		ocupados.clear()
+	}
+
+	method tieneCombinacion(combinacion) = combinacion.all{casillero => ocupados.contains(casillero)}
+	
+	method jugar(){
+		inteligencia.jugar()
+	}
+	method rotarInteligencia(){
+		inteligencia = inteligencia.rotar()
+	}
+	method interactivo() = inteligencia.interactiva()
+	
+}
+
